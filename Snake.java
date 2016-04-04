@@ -1,4 +1,5 @@
-
+import java.util.ArrayList;
+import java.awt.Color;
 /**
  * Write a description of class Snake here.
  * 
@@ -8,26 +9,18 @@
 public class Snake
 {
     // instance variables - replace the example below with your own
-    private int x;
-
+    private ArrayList<Segmento> listaSegmentos;
+    private static final int NUMERO_SEG_INI = 3;
+    private static final Color COLOR_SERPIENTE = Color.BLACK;
+    private int anchoLienzo;
+    private int altoLienzo;
+    
     /**
      * Constructor for objects of class Snake
      */
     public Snake()
     {
-        // initialise instance variables
-        x = 0;
+        
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
 }
