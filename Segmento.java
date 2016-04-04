@@ -56,4 +56,39 @@ public class Segmento
     public void borrarLienzo(Canvas lienzo){
         lienzo.erase();
     }
+    
+    /**
+     * Metodo que devuelve la posicion, en el eje horizontal, del segmento
+     */
+    public int getPosX(){
+        return posX;
+    }
+    
+    /**
+     * Metodo que devuelve la posicion, en el eje vertical, del segmento
+     */
+    public int getPosY(){
+        return posY;
+    }
+    
+    /**
+     * Metodo que devuelve la posicion final, en el eje horizontal, del segmento
+     */
+    public int getPosFinX(){
+        return posFinX;
+    }
+    
+    /**
+     * Metodo que devuelve la posicion final, en el eje vertical, del segmento
+     */
+    public int getPosFinY(){
+        return posFinY;
+    }
+    
+    /**
+     * Metodo que devuelve la direccion del segmento
+     */
+    public int getDireccion(){
+        return direccion;
+    }
 }
