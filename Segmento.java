@@ -19,12 +19,12 @@ public class Segmento
     /**
      * Constructor for objects of class Segmento
      */
-    public Segmento(int posX, int posY, int direccion, Color color)
+    public Segmento(int posX, int posY, int direccion) //, Color color
     {
         this.posX = posX;
         this.posY = posY;
         this.direccion = direccion;
-        this.color = color;
+        //this.color = color;
         if(direccion == 0){ // Direccion 0, hacia la derecha
             posFinX = posX + LONGITUD_SEGMENTO;
             posFinY = posY;
@@ -43,4 +43,12 @@ public class Segmento
         }
     }
 
+    /**
+     * Metodo para dibujar el segmento en el lienzo
+     */
+    public void dibujarSegmento(Canvas lienzo){
+        lienzo.drawLine(posX, posY, posFinX, posFinY);
+    }
+    
+   
 }
