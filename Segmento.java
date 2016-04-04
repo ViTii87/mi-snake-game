@@ -50,5 +50,10 @@ public class Segmento
         lienzo.drawLine(posX, posY, posFinX, posFinY);
     }
     
-   
+    /**
+     * Metodo para borrar el lienzo
+     */
+    public void borrarLienzo(Canvas lienzo){
+        lienzo.erase();
+    }
 }
