@@ -91,4 +91,12 @@ public class Segmento
     public int getDireccion(){
         return direccion;
     }
+    
+    /**
+     * Metodo para comprobar si el segmento colisiona con otro ya existente
+     */
+    public boolean colisionaCon(Segmento seg){
+        return ((seg.getPosFinX() == posX || seg.getPosFinX() == posFinX) &&
+                (seg.getPosFinY() == posX || seg.getPosFinY() == posFinY));
+    }
 }
