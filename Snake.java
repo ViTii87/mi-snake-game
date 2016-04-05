@@ -9,7 +9,7 @@ import java.awt.Color;
 public class Snake
 {
     // instance variables - replace the example below with your own
-    private ArrayList<Segmento> listaSegmentos;
+    private ArrayList<Segment> listaSegmentos;
     private static final int NUMERO_SEG_INI = 3;
     private static final Color COLOR_SERPIENTE = Color.BLACK;
     private int anchoLienzo;
