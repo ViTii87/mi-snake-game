@@ -8,8 +8,8 @@ import java.awt.Color;
 public class Segment
 {
     // instance variables - replace the example below with your own
-    private int posX;
-    private int posY;
+    private int posicionX;
+    private int posicionY;
     private int direccion;
     private Color color;
     public static final int LONGITUD_SEGMENTO = 4;
@@ -19,8 +19,8 @@ public class Segment
      */
     public Segment(int posX, int posY, int direccion, Color color)
     {
-        this.posX = posX;
-        this.posY = posY;
+        posicionX = posX;
+        posicionY = posY;
         this.direccion = direccion;
         this.color = color;
         
@@ -31,7 +31,7 @@ public class Segment
      */
     public void dibujar(Canvas lienzo){
         //lienzo.drawLine(posX, posY, posFinX, posFinY);
-        Pen lapiz = new Pen(posX, posY, lienzo);
+        Pen lapiz = new Pen(posicionX, posicionY, lienzo);
         lapiz.turnTo(direccion * 90);
         lapiz.move(LONGITUD_SEGMENTO);
     }
@@ -49,27 +49,27 @@ public class Segment
     /**
      * Metodo que devuelve la posicion, en el eje horizontal, del segmento
      */
-    public int getPosX(){
-        return posX;
+    public int getPosicionInicialX(){
+        return posicionX;
     }
 
     /**
      * Metodo que devuelve la posicion, en el eje vertical, del segmento
      */
-    public int getPosY(){
-        return posY;
+    public int getPosicionInicialY(){
+        return posicionY;
     }
 
     /**
      * Metodo que devuelve la posicion final, en el eje horizontal, del segmento
      */
-    public int getPosFinX(){
-        int posFinX = posX;
+    public int getPosicionFinalX(){
+        int posFinX = posicionX;
         if(direccion == 0){
-            posFinX = posX + LONGITUD_SEGMENTO;
+            posFinX = posicionX + LONGITUD_SEGMENTO;
         }
         else if(direccion == 2){
-            posFinX = posX - LONGITUD_SEGMENTO;
+            posFinX = posicionX - LONGITUD_SEGMENTO;
         }
         return posFinX;
     }
@@ -77,13 +77,13 @@ public class Segment
     /**
      * Metodo que devuelve la posicion final, en el eje vertical, del segmento
      */
-    public int getPosFinY(){
-        int posFinY = posY;
+    public int getPosicionFinalY(){
+        int posFinY = posicionY;
         if(direccion == 1){
-            posFinY = posY + LONGITUD_SEGMENTO;
+            posFinY = posicionY + LONGITUD_SEGMENTO;
         }
         else if(direccion == 3){
-            posFinY = posY - LONGITUD_SEGMENTO;
+            posFinY = posicionY - LONGITUD_SEGMENTO;
         }
         return posFinY;
     }
@@ -99,7 +99,7 @@ public class Segment
      * Metodo para comprobar si el segmento colisiona con otro ya existente
      */
     public boolean colisionaCon(Segment seg){
-        return ((seg.getPosFinX() == posX || seg.getPosFinX() == getPosFinX()) &&
-            (seg.getPosFinY() == posX || seg.getPosFinY() == getPosFinY()));
+        return ((seg.getPosicionFinalX() == posicionX || seg.getPosicionFinalX() == getPosicionFinalX()) &&
+            (seg.getPosicionFinalY() == posicionX || seg.getPosicionFinalY() == getPosicionFinalY()));
     }
 }
