@@ -23,17 +23,14 @@ public class Segment
         posicionY = posY;
         this.direccion = direccion;
         this.color = color;
-        
     }
 
     /**
      * Metodo para dibujar el segmento en el lienzo
      */
     public void dibujar(Canvas lienzo){
-        //lienzo.drawLine(posX, posY, posFinX, posFinY);
-        Pen lapiz = new Pen(posicionX, posicionY, lienzo);
-        lapiz.turnTo(direccion * 90);
-        lapiz.move(LONGITUD_SEGMENTO);
+        lienzo.setForegroundColor(color);
+        lienzo.drawLine(posicionX, posicionY, getPosicionFinalX(), getPosicionFinalY());
     }
 
     /**
@@ -42,7 +39,7 @@ public class Segment
     public void borrar(Canvas lienzo){
         Color colorSnake = lienzo.getForegroundColor();
         lienzo.setForegroundColor(lienzo.getBackgroundColor());
-        dibujar(lienzo);
+        lienzo.drawLine(posicionX, posicionY, getPosicionFinalX(), getPosicionFinalY());
         lienzo.setForegroundColor(colorSnake);
     }
 
@@ -68,7 +65,7 @@ public class Segment
         if(direccion == 0){
             posFinX = posicionX + LONGITUD_SEGMENTO;
         }
-        else if(direccion == 2){
+        else if(direccion == 180){
             posFinX = posicionX - LONGITUD_SEGMENTO;
         }
         return posFinX;
@@ -79,10 +76,10 @@ public class Segment
      */
     public int getPosicionFinalY(){
         int posFinY = posicionY;
-        if(direccion == 1){
+        if(direccion == 90){
             posFinY = posicionY + LONGITUD_SEGMENTO;
         }
-        else if(direccion == 3){
+        else if(direccion == 270){
             posFinY = posicionY - LONGITUD_SEGMENTO;
         }
         return posFinY;
@@ -96,10 +93,11 @@ public class Segment
     }
 
     /**
-     * Metodo para comprobar si el segmento colisiona con otro ya existente
+     * Devuelve true si el segmento pasado como parametro colisiona con el segmento sobre el
+     * que se invoca el metodo, teniendo en cuenta que el pasado como parametro se supone que
+     * es un nuevo segmento de la serpiente; false en otro caso
      */
     public boolean colisionaCon(Segment seg){
-        return ((seg.getPosicionFinalX() == posicionX || seg.getPosicionFinalX() == getPosicionFinalX()) &&
-            (seg.getPosicionFinalY() == posicionX || seg.getPosicionFinalY() == getPosicionFinalY()));
+        return (posicionX == seg.getPosicionFinalX() && posicionY == seg.getPosicionFinalY());
     }
 }

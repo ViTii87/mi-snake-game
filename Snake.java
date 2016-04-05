@@ -9,8 +9,8 @@ import java.awt.Color;
 public class Snake
 {
     // instance variables - replace the example below with your own
-    private ArrayList<Segment> listaSegmentos;
-    private static final int NUMERO_SEG_INI = 3;
+    private ArrayList<Segment> segmentos;
+    private static final int NUMERO_SEGMENTOS_INICIALES = 3;
     private static final Color COLOR_SERPIENTE = Color.BLACK;
     private int anchoLienzo;
     private int altoLienzo;
@@ -18,9 +18,11 @@ public class Snake
     /**
      * Constructor for objects of class Snake
      */
-    public Snake()
+    public Snake(int altoLienzo, int anchoLienzo)
     {
-        
+        this.altoLienzo = altoLienzo;
+        this.anchoLienzo = anchoLienzo;
+        segmentos = new ArrayList<>();
     }
 
 }
