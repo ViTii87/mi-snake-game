@@ -14,7 +14,7 @@ public class Segmento
     private int posFinY;
     private int direccion;
     private Color color;
-    private static final int LONGITUD_SEGMENTO = 4;
+    public static final int LONGITUD_SEGMENTO = 4;
 
     /**
      * Constructor for objects of class Segmento
@@ -53,8 +53,11 @@ public class Segmento
     /**
      * Metodo para borrar el lienzo
      */
-    public void borrarLienzo(Canvas lienzo){
-        lienzo.erase();
+    public void borrarSegmento(Canvas lienzo){
+        Color colorSnake = lienzo.getForegroundColor();
+        lienzo.setForegroundColor(lienzo.getBackgroundColor());
+        dibujarSegmento(lienzo);
+        lienzo.setForegroundColor(colorSnake);
     }
     
     /**
