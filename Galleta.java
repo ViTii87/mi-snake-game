@@ -21,5 +21,19 @@ public class Galleta
         this.posY = posY;
     }
 
-   
+    /**
+     * Devolvemos la posicion de la galleta en el eje horizontal
+     */
+    public int getPosX()
+    {
+        return posX;
+    }
+
+    /**
+     * Devolvemos la posicion de la galleta en el eje vertical
+     */
+    public int getPosY()
+    {
+        return posY;
+    }
 }
