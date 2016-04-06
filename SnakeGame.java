@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * Clase SnakeGame
  * 
@@ -16,18 +17,26 @@ public class SnakeGame
      */
     public SnakeGame()
     {
-        lienzo = new Canvas("lienzo", ANCHO, ALTO);
-        serpiente = new Snake(ANCHO, ALTO);
+        lienzo = new Canvas("SnakeGame", ANCHO, ALTO);
     }
-    
-    
-    
+
     /*
      * Dibuja una serpiente en la pantalla
      */
     public void drawSnake()
     {
+        serpiente = new Snake(ANCHO, ALTO);
+        lienzo.erase();
         serpiente.dibujar(lienzo);
     }
     
+    /**
+     * Anima la serpiente, terminara cuando no tenga mas movimientos y pondra un mensaje an pantalla
+     */
+    public void animateSnake(){
+        while(serpiente.mover(lienzo)){
+            lienzo.wait(50);
+        }
+        lienzo.drawString("Game Over!", ANCHO/2, ALTO/2);
+    }
 }
