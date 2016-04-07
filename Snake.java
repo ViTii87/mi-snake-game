@@ -12,11 +12,11 @@ public class Snake
 {
     private int anchoLienzo;
     private int altoLienzo;
-    private static final int NUMERO_SEGMENTOS_INICIALES = 13;
+    private static final int NUMERO_SEGMENTOS_INICIALES = 4;
     private static final Color color = Color.BLACK;
     private ArrayList<Segment> segmentos;   
     private static final int DIFERENCIA_DE_GRADOS_ENTRE_DIRECCIONES = 90;
-    private static final int MARGEN_LIENZO = 10;
+    public static final int MARGEN_LIENZO = 10;
     private static final int TAMANO_CABEZA = 8;
 
     /*
@@ -149,13 +149,26 @@ public class Snake
      */
     public boolean mover(Canvas lienzo){
         borrar(lienzo);
-        boolean hayColision = addSegment();
-        if(hayColision){
-            Random rnd = new Random();
+        boolean noHayColision = addSegment();
+        if(noHayColision){
             segmentos.get(0).borrar(lienzo);
             segmentos.remove(0);
         }
         dibujar(lienzo);
+        return noHayColision;
+    }
+    
+    /**
+     * Metodo que va a detectar si colisionamos con algun punto en concreto
+     */
+    public boolean colisionConPuntos(int posX, int posY){
+        boolean hayColision = false;
+        for (Segment segmentoSerpiente : segmentos) {
+            if((segmentoSerpiente.getPosicionInicialX() == posX || segmentoSerpiente.getPosicionFinalX() == posX) &&
+            (segmentoSerpiente.getPosicionInicialY() == posY || segmentoSerpiente.getPosicionFinalY() == posY)){
+                hayColision = true;
+            }
+        }
         return hayColision;
     }
 }
