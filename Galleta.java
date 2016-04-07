@@ -11,6 +11,7 @@ public class Galleta
     private int posX;
     private int posY;
     public static final int NUM_GALLETAS = 10;
+    public static final int RADIO_GALLETA = 2;
 
     /**
      * Constructor for objects of class Galleta
@@ -35,5 +36,14 @@ public class Galleta
     public int getPosY()
     {
         return posY;
+    }
+    
+    /**
+     * Metodo que dibujara la galleta en pantalla
+     * 
+     */
+    public void drawGalleta(Canvas lienzo)
+    {
+        lienzo.fillCircle(posX - RADIO_GALLETA, posY - RADIO_GALLETA, RADIO_GALLETA*2);
     }
 }
