@@ -100,4 +100,13 @@ public class SnakeGame
         generaGalletas(NUM_GALLETAS);
         animateSnake();
     }
+    
+    /**
+     * Metodo para reiniciar el juego.
+     */
+    public void reset(){
+        lienzo.erase();
+        galletas = new ArrayList<>();
+        startGame();
+    }
 }
