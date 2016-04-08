@@ -51,11 +51,11 @@ public class SnakeGame
         Random rnd = new Random();
         int j = 0;
         for(int i = 0; i < numGalletas - 1; i++){
-            int posGX = rnd.nextInt(ANCHO - (serpiente.MARGEN_LIENZO * 2)) + serpiente.MARGEN_LIENZO;
-            int posGY = rnd.nextInt(ALTO - (serpiente.MARGEN_LIENZO * 2)) + serpiente.MARGEN_LIENZO;
+            int posGX = (rnd.nextInt((ANCHO - (serpiente.MARGEN_LIENZO * 2)) / Segment.LONGITUD_SEGMENTO) * Segment.LONGITUD_SEGMENTO) + serpiente.MARGEN_LIENZO;
+            int posGY = (rnd.nextInt((ALTO - (serpiente.MARGEN_LIENZO * 2)) / Segment.LONGITUD_SEGMENTO) * Segment.LONGITUD_SEGMENTO) + serpiente.MARGEN_LIENZO;
             while(serpiente.colisionConPuntos(posGX, posGY)){
-                posGX = rnd.nextInt(ANCHO - (serpiente.MARGEN_LIENZO * 2)) + serpiente.MARGEN_LIENZO;
-                posGY = rnd.nextInt(ALTO - (serpiente.MARGEN_LIENZO * 2)) + serpiente.MARGEN_LIENZO;
+                posGX = (rnd.nextInt((ANCHO - (serpiente.MARGEN_LIENZO * 2)) / Segment.LONGITUD_SEGMENTO) * Segment.LONGITUD_SEGMENTO) + serpiente.MARGEN_LIENZO;
+                posGY = (rnd.nextInt((ALTO - (serpiente.MARGEN_LIENZO * 2)) / Segment.LONGITUD_SEGMENTO) * Segment.LONGITUD_SEGMENTO) + serpiente.MARGEN_LIENZO;
             }
             while(j < galletas.size() && galletas.size()!=0){
                 if(posGX == galletas.get(j).getPosX() && posGY == galletas.get(j).getPosY()){
