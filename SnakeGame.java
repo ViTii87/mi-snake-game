@@ -21,6 +21,7 @@ public class SnakeGame
     {
         lienzo = new Canvas("SnakeGame", ANCHO, ALTO);
         galletas = new ArrayList<>();
+       
     }
 
     /*
@@ -39,6 +40,7 @@ public class SnakeGame
      */
     public void animateSnake(){
         while(serpiente.mover(lienzo)){
+            comeGalletas();
             lienzo.wait(50);
         }
         lienzo.drawString("Game Over!", ANCHO/2, ALTO/2);
@@ -65,6 +67,27 @@ public class SnakeGame
             }
             galletas.add(new  Galleta(posGX, posGY));
             galletas.get(i).drawGalleta(lienzo);
+        }
+    }
+
+    /**
+     * 
+     */
+    public void comeGalletas(){
+        Segment ultimoSegmento = serpiente.ultimoSegmento();
+        int i = 0;
+        boolean encontrado = false;
+        while(i < galletas.size() && !encontrado)
+        {
+            if(ultimoSegmento.getPosicionInicialX() == galletas.get(i).getPosX() && ultimoSegmento.getPosicionInicialY() == galletas.get(i).getPosY()){
+                galletas.get(i).borrar(lienzo);
+                galletas.remove(galletas.get(i));
+                serpiente.borrar(lienzo);
+                serpiente.addSegment();
+                serpiente.dibujar(lienzo);
+                encontrado = true;
+            }
+            i++;
         }
     }
 }

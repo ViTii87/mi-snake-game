@@ -75,10 +75,9 @@ public class Snake
         //Calculamos las coordenadas de inicio del segmento: si no había
         //segmentos, lo ubicamos en una posicion aleatoria; si los había, al final del ultimo
         //segmento
-        int posicionOrigenX = aleatorio.nextInt(anchoLienzo - (2 * MARGEN_LIENZO)) 
-            + MARGEN_LIENZO + Segment.LONGITUD_SEGMENTO; 
-        int posicionOrigenY = aleatorio.nextInt(altoLienzo - (2 * MARGEN_LIENZO)) 
-            + MARGEN_LIENZO + Segment.LONGITUD_SEGMENTO; 
+        int posicionOrigenX = (aleatorio.nextInt((anchoLienzo - (2 * MARGEN_LIENZO)) / Segment.LONGITUD_SEGMENTO) * Segment.LONGITUD_SEGMENTO) + MARGEN_LIENZO;
+        int posicionOrigenY = (aleatorio.nextInt((altoLienzo - (2 * MARGEN_LIENZO)) / Segment.LONGITUD_SEGMENTO) * Segment.LONGITUD_SEGMENTO) + MARGEN_LIENZO;
+           
         if (segmentos.size() != 0) {
             posicionOrigenX = segmentos.get(segmentos.size() - 1).getPosicionFinalX();
             posicionOrigenY = segmentos.get(segmentos.size() - 1).getPosicionFinalY();
@@ -170,5 +169,9 @@ public class Snake
             }
         }
         return hayColision;
+    }
+    
+    public Segment ultimoSegmento(){
+        return segmentos.get(segmentos.size()-1);
     }
 }
