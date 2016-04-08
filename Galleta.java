@@ -47,6 +47,9 @@ public class Galleta
         lienzo.fillCircle(posX - RADIO_GALLETA, posY - RADIO_GALLETA, RADIO_GALLETA*2);
     }
     
+    /**
+     * Metodo que borrara la galleta en pantalla
+     */
     public void borrar(Canvas lienzo){
         lienzo.eraseCircle(posX - RADIO_GALLETA, posY - RADIO_GALLETA, RADIO_GALLETA * 2);
     }

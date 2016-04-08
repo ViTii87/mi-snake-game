@@ -13,6 +13,7 @@ public class SnakeGame
     private static final int ALTO = 600;
     private static final int ANCHO = 600;
     private ArrayList<Galleta> galletas;
+    private static final int NUM_GALLETAS = 500;
 
     /*
      * Constructor de la clase Snake
@@ -32,7 +33,6 @@ public class SnakeGame
         serpiente = new Snake(ANCHO, ALTO);
         lienzo.erase();
         serpiente.dibujar(lienzo);
-        generaGalletas(500);
     }
 
     /**
@@ -43,7 +43,7 @@ public class SnakeGame
             comeGalletas();
             lienzo.wait(50);
         }
-        lienzo.drawString("Game Over!", ANCHO/2, ALTO/2);
+        lienzo.drawString("Game Over!", ANCHO/2 - 50, ALTO/2);
     }
 
     /**
@@ -52,7 +52,8 @@ public class SnakeGame
     public void generaGalletas(int numGalletas){
         Random rnd = new Random();
         int j = 0;
-        for(int i = 0; i < numGalletas - 1; i++){
+        for(int i = 0; i < numGalletas - 1; i++){ 
+            //Esto calculara la posicion de la galleta dentro de los limites y posicion valida (un jodido lio!)
             int posGX = (rnd.nextInt((ANCHO - (serpiente.MARGEN_LIENZO * 2)) / Segment.LONGITUD_SEGMENTO) * Segment.LONGITUD_SEGMENTO) + serpiente.MARGEN_LIENZO;
             int posGY = (rnd.nextInt((ALTO - (serpiente.MARGEN_LIENZO * 2)) / Segment.LONGITUD_SEGMENTO) * Segment.LONGITUD_SEGMENTO) + serpiente.MARGEN_LIENZO;
             while(serpiente.colisionConPuntos(posGX, posGY)){
@@ -71,7 +72,7 @@ public class SnakeGame
     }
 
     /**
-     * 
+     * Metodo que ira comiendo las galletas generadas en pantalla, ademas va creciendo con cada galleta ingerida.
      */
     public void comeGalletas(){
         Segment ultimoSegmento = serpiente.ultimoSegmento();
@@ -89,5 +90,14 @@ public class SnakeGame
             }
             i++;
         }
+    }
+    
+    /**
+     * Metodo que pone en marcha el juego, dibuja la serpiente, genera las galletas y la pone en movimiento.
+     */
+    public void startGame(){
+        drawSnake();
+        generaGalletas(NUM_GALLETAS);
+        animateSnake();
     }
 }
